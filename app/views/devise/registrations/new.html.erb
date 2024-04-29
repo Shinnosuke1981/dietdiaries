@@ -1,36 +1,36 @@
 <div class="contents row">
   <div class="container">
-    <h2>Sign up</h2>
+    <h1 class="form-title">Sign up</h1>
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-       <div class="field">
-        <%= f.label :nickname %> <em>(6 characters maximum)</em><br />
+      <div class="field">
+        <%= f.label :nickname, "ニックネーム (6文字まで)" %> <br />
         <%= f.text_field :nickname, autofocus: true %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email, "メールアドレス" %><br />
         <%= f.email_field :email %>
       </div>
  
       <div class="field">
-        <%= f.label :password %>
+        <%= f.label :password, "パスワード" %>
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation, "パスワード確認" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :biological_sex_id %>
+        <%= f.label :biological_sex_id, "性別" %>
         <%= f.number_field :biological_sex_id %>
       </div>
 
       <div class="field">
-        <%= f.label :birth_date %>
+        <%= f.label :birth_date,"生年月日" %>
         <%= f.date_select :birth_date, 
                           start_year: Time.now.year, 
                           end_year: 1930, 
@@ -39,7 +39,7 @@
       </div>
 
       <div class="field">
-         <%= f.label :age %>
+         <%= f.label :age, "年齢" %>
          <div class="input-group">
            <%= f.number_field :age, class: 'form-control' %>
            <span class="input-group-addon">才</span>
@@ -47,7 +47,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :start_date %>
+        <%= f.label :start_date, "ダイエット開始日" %>
         <%= f.date_select :start_date, 
                           start_year: 2000, 
                           end_year: Time.now.year + 5, 
@@ -56,7 +56,7 @@
       </div>
 
       <div class="field">
-         <%= f.label :height %>
+         <%= f.label :height, "身長" %>
          <div class="input-group">
            <%= f.number_field :height, class: 'form-control' %>
            <span class="input-group-addon">cm</span>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="field">
-         <%= f.label :starting_weight %>
+         <%= f.label :starting_weight, "ダイエット前の体重" %>
          <div class="input-group">
            <%= f.number_field :starting_weight, class: 'form-control' %>
            <span class="input-group-addon">kg</span>
@@ -72,7 +72,7 @@
       </div>
 
       <div class="field">
-         <%= f.label :appropriate_weight %>
+         <%= f.label :appropriate_weight, "適正体重" %>
          <div class="input-group">
            <%= f.number_field :appropriate_weight, class: 'form-control' %>
            <span class="input-group-addon">kg</span>
@@ -80,12 +80,12 @@
       </div>
 
       <div class="field">
-        <%= f.label :BMI %>
+        <%= f.label :BMI, "ＢＭＩ" %>
         <%= f.number_field :BMI %>
       </div>
 
       <div class="field">
-         <%= f.label :starting_BFP %>
+         <%= f.label :starting_BFP, "ダイエット前の体脂肪率" %>
          <div class="input-group">
            <%= f.number_field :starting_BFP, class: 'form-control' %>
            <span class="input-group-addon">%</span>
@@ -93,10 +93,10 @@
       </div>
 
       <div class="field">
-        <%= f.label :comment %> <em>(400 characters maximum)</em><br />
-        <%= f.text_field :comment,  placeholder:"自由に記述してください。ダイエット方法、ダイエットをするための決意表明など" %>
+        <%= f.label :comment, "自由コメント欄（４００文字まで）" %> <br />
+        <%= f.text_area :comment, placeholder:"自由に記述してください。ダイエット方法、ダイエットをするための決意表明など", rows: 5 %>
       </div>
-      
+
       <div class="actions">
         <%= f.submit "Sign up" %>
       </div>
