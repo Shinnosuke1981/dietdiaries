@@ -1,0 +1,35 @@
+.header {
+  height: 100px;
+  background-color: #ADD8E6; /* Light Blue */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px; /* 30px padding to the right */
+}
+
+.header h1 {
+  color: #f346db; /* Deep Pink */
+}
+
+.header .actions {
+  display: flex;
+  justify-content: space-between; /* Add space between buttons */
+  width: calc(100px * 3 + 30px * 2); /* Adjust the width for two buttons and 2 gap spaces */
+}
+
+.header a {
+  text-decoration: none; /* This removes the underline */
+}
+
+.header button {
+  font-size: 18px;
+  width: 100px;
+  background-color: #ADD8E6; /* Light Blue */
+  color: rgb(111, 111, 195);
+  text-align: center;
+  font-weight: bold;
+  margin-right: 30px; /* This ensures there is 30px space between buttons */
+  border: 1px solid #000; /* This adds the border to the button */
+  border-radius: 5px; /* This adds rounded corners to the button */
+}
+
