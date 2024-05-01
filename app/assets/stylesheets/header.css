@@ -8,7 +8,8 @@
 }
 
 .header h1 {
-  color: #f346db; /* Deep Pink */
+  color: #F7EEDD; /* Deep Pink */
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.2); 
 }
 
 .header .actions {
@@ -29,7 +30,13 @@
   text-align: center;
   font-weight: bold;
   margin-right: 30px; /* This ensures there is 30px space between buttons */
-  border: 1px solid #000; /* This adds the border to the button */
-  border-radius: 5px; /* This adds rounded corners to the button */
+}
+
+.button-wrapper {
+  font-weight: bold;
+  border: 2px solid #F7EEDD; /* I made the border darker and thicker */
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* This adds some shadow around the button for a 3D effect */
 }
 
