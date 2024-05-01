@@ -26,9 +26,9 @@
 
       <div class="field">
         <%= f.label :biological_sex_id, "性別" %>
-        <%= f.number_field :biological_sex_id %>
+        <%= f.collection_select :biological_sex_id, BiologicalSex.all, :id, :name %>
       </div>
-
+     
       <div class="field">
         <%= f.label :birth_date,"生年月日" %>
         <%= f.date_select :birth_date, 
