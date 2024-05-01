@@ -29,14 +29,10 @@
         <%= f.collection_select :biological_sex_id, BiologicalSex.all, :id, :name %>
       </div>
      
-      <div class="field">
+     <div class="field">
         <%= f.label :birth_date,"生年月日" %>
-        <%= f.date_select :birth_date, 
-                          start_year: Time.now.year, 
-                          end_year: 1930, 
-                          prompt: { day: '--', month: '--', year: '--' } 
-        %>
-      </div>
+        <%= custom_date_select :user, :birth_date %>
+      </div> 
 
       <div class="field">
          <%= f.label :age, "年齢" %>
@@ -48,50 +44,54 @@
 
       <div class="field">
         <%= f.label :start_date, "ダイエット開始日" %>
-        <%= f.date_select :start_date, 
-                          start_year: 2000, 
-                          end_year: Time.now.year + 5, 
-                          prompt: { day: '--', month: '--', year: '--' } 
-        %>
+        <%= custom_date_select :user, :start_date, start_year: 2000, end_year: Time.now.year + 5 %>
       </div>
 
       <div class="field">
-         <%= f.label :height, "身長" %>
-         <div class="input-group">
-           <%= f.number_field :height, class: 'form-control' %>
-           <span class="input-group-addon">cm</span>
-         </div>
+        <%= f.label :height, "身長" %>
+        <div class="input-group">
+          <%= f.number_field :height, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">cm</span>
+        </div>
       </div>
 
       <div class="field">
-         <%= f.label :starting_weight, "ダイエット前の体重" %>
-         <div class="input-group">
-           <%= f.number_field :starting_weight, class: 'form-control' %>
-           <span class="input-group-addon">kg</span>
-         </div>
+        <%= f.label :starting_weight, "ダイエット前の体重" %>
+        <div class="input-group">
+          <%= f.number_field :starting_weight, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
       </div>
 
       <div class="field">
-         <%= f.label :appropriate_weight, "適正体重" %>
-         <div class="input-group">
-           <%= f.number_field :appropriate_weight, class: 'form-control' %>
-           <span class="input-group-addon">kg</span>
-         </div>
+        <%= f.label :appropriate_weight, "適正体重" %>
+        <div class="input-group">
+          <%= f.number_field :appropriate_weight, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
       </div>
 
       <div class="field">
         <%= f.label :BMI, "ＢＭＩ" %>
-        <%= f.number_field :BMI %>
+        <%= f.number_field :BMI, step: 'any' %>
       </div>
 
       <div class="field">
-         <%= f.label :starting_BFP, "ダイエット前の体脂肪率" %>
-         <div class="input-group">
-           <%= f.number_field :starting_BFP, class: 'form-control' %>
-           <span class="input-group-addon">%</span>
-         </div>
+        <%= f.label :starting_BFP, "ダイエット前の体脂肪率" %>
+        <div class="input-group">
+          <%= f.number_field :starting_BFP, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">%</span>
+        </div>
       </div>
 
+      <div class="field">
+        <%= f.label :term_goal, "目標体重" %>
+        <div class="input-group">
+          <%= f.number_field :term_goal, step: 'any', class: 'form-control' %> <!-- ※typoがあったので`term_goal`に修正 -->
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+      
       <div class="field">
         <%= f.label :comment, "自由コメント欄（４００文字まで）" %> <br />
         <%= f.text_area :comment, placeholder:"自由に記述してください。ダイエット方法、ダイエットをするための決意表明など", rows: 5 %>

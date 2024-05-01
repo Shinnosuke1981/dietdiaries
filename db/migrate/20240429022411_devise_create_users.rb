@@ -9,12 +9,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.date :birth_date
       t.integer :age
       t.date :start_date
-      t.integer :height, null: false
-      t.integer :starting_weight
-      t.integer :appropriate_weight
-      t.integer :BMI
-      t.integer :starting_BFP
-      t.integer :term_goal
+      t.float :height, null: false
+      t.float :starting_weight
+      t.float :appropriate_weight
+      t.float :BMI
+      t.float :starting_BFP
+      t.float :term_goal
       t.text :comment
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

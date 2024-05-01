@@ -17,12 +17,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_29_022411) do
     t.date "birth_date"
     t.integer "age"
     t.date "start_date"
-    t.integer "height", null: false
-    t.integer "starting_weight"
-    t.integer "appropriate_weight"
-    t.integer "BMI"
-    t.integer "starting_BFP"
-    t.integer "term_goal"
+    t.float "height", null: false
+    t.float "starting_weight"
+    t.float "appropriate_weight"
+    t.float "BMI"
+    t.float "starting_BFP"
+    t.float "term_goal"
     t.text "comment"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
