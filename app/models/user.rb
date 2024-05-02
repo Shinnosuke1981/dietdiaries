@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :diaries
+
   validates :nickname, presence: true
   validates :height, presence: true
   validates :height, numericality: true, allow_blank: true
