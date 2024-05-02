@@ -1,0 +1,70 @@
+<div class="contents row">
+  <div class="container">
+    <h1 class="form-title">New Diary Entry</h1>
+    <%= form_with model: @diary, url: diaries_path, id: 'new_diary', class: 'new_diary', local: true do |f| %>
+      <%= render "shared/error_messages", resource: @diary %>
+
+      <div class="field">
+        <%= f.label :entry_date, "日付" %>
+        <%= f.date_select :entry_date, start_year: 2000, end_year: Time.now.year + 5, use_month_numbers: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_weight, "現在の体重" %>
+        <div class="input-group">
+          <%= f.number_field :current_weight, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :weight_difference, "前回体重との差" %>
+        <div class="input-group">
+          <%= f.number_field :weight_difference, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :plus_calories, "摂取カロリー" %>
+        <div class="input-group">
+          <%= f.number_field :plus_calories, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :minus_calories, "消費カロリー" %>
+        <div class="input-group">
+          <%= f.number_field :minus_calories, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :calorie_balance, "カロリー差（摂取カロリー・マイナス・消費カロリー" %>
+        <div class="input-group">
+          <%= f.number_field :calorie_balance, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_BFP, "現在の体脂肪率" %>
+        <div class="input-group">
+          <%= f.number_field :current_BFP, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :diary_comment, "自由コメント欄" %><br />
+        <%= f.text_area :diary_comment, rows: 5 %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Post Entry" %>
+      </div>
+    <% end %>
+  </div>
+</div>

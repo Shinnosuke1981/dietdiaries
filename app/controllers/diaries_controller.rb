@@ -1,7 +1,12 @@
 class DiariesController < ApplicationController
-  #before_action :authenticate_user!
-
   def index
-   # @diaries = current_user.diaries 
+    @diaries = current_user.diaries
+    @latest_diary = @diaries.last
   end
+
+  def new
+    @diary = Diary.new
+  end
+
+
 end
