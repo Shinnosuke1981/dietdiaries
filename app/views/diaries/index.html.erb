@@ -5,12 +5,22 @@
 <div class= main>
 
   <!-- ユーザー情報 -->
-  <div class="user-info-box">
-    <p>ニックネーム: <%= current_user.nickname %>さん</p>
-    <p>目標体重: <%= current_user.term_goal %>kg</p>
-    <p>最新の体重: <%= current_user.diaries.last.current_weight unless current_user.diaries.empty? %>kg</p>
-    <p>前回測定時との差: <%= current_user.diaries.last.weight_difference unless current_user.diaries.empty? %>kg</p>
-   </div>
+<div class="user-info">
+  <% if current_user %>
+    <div class="user-info-box">
+      <p>ニックネーム: <%= current_user.nickname %>さん</p>
+      <p>目標体重: <%= current_user.term_goal %>kg</p>
+      <p>最新の体重: <%= current_user.diaries.last.current_weight unless current_user.diaries.empty? %>kg</p>
+      <p>前回測定時との差: <%= current_user.diaries.last.weight_difference unless current_user.diaries.empty? %>kg</p>
+    </div>
+  <% else %>
+    <div class="info-image-wrapper">
+      <img class="info-image" src="<%= image_path 'diet.png' %>" alt="Diet image">
+      <p class="info-text">～あなたの健康はあなたのもの。管理するのは、あなた自身～</p>
+      <p class="info-text info-text-delay">～今日から健康的なダイエットを、あなたも一緒にはじめませんか？～</p>
+    </div>
+  <% end %>
+</div>
 
   <!-- カレンダー -->
   <%= month_calendar do |date| %>
