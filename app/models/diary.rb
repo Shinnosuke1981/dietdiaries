@@ -1,6 +1,10 @@
 class Diary < ApplicationRecord
   belongs_to :user
 
+  def start_time
+    self.entry_date
+  end
+
   validates :entry_date, presence: true
   validates :current_weight, presence: true, numericality: { greater_than: 0 }
   validates :weight_difference, numericality: true, allow_blank: true

@@ -23,9 +23,19 @@
 </div>
 
   <!-- カレンダー -->
-  <%= month_calendar do |date| %>
-    <%= date %>
+<%= month_calendar events: @entries do |date, entries| %>
+  <%= date %>
+  <% if !entries.empty? %>
+    <% entries.each do |entry| %>
+      <div>
+        <p>体重: <%= entry.current_weight %> kg</p>
+        <p>摂取カロリー: <%= entry.plus_calories %> kcal</p>
+        <p>消費カロリー: <%= entry.minus_calories %> kcal</p>
+      </div>
+    <% end %>
   <% end %>
+<% end %>
+
 
   <!-- 折れ線グラフ -->
 
