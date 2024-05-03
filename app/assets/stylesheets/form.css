@@ -38,21 +38,40 @@ form input[type="number"] {
   border: 1px solid #ccc;
 }
 
-form input[type="submit"] {
+.button {
+  display: inline-flex;  
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 3px;
+  text-decoration: none;  
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+form input[type="submit"].button {
   background-color: #0099ff;
   color: white;
   border: none;
-  border-radius: 3px;
-  padding: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
+
 }
 
-form input[type="submit"]:hover {
+form input[type="submit"].button:hover {
   background-color: #007acc;
 }
 
 textarea {
   resize: vertical;
   width: 100%;
+}
+
+form a.back-button.button {
+  margin-left: 20px;
+  background-color: #ccc;
+  color: black;
+}
+
+form a.back-button.button:hover {
+  background-color: #aaa;
 }
