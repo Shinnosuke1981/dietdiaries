@@ -1,4 +1,6 @@
 class DiariesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     if current_user
       @diaries = current_user.diaries

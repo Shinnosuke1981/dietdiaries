@@ -26,7 +26,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :plus_calories, "摂取カロリー" %>
+        <%= f.label :plus_calories, "今日の摂取カロリー" %>
         <div class="input-group">
           <%= f.number_field :plus_calories, step: 'any', class: 'form-control' %>
           <span class="input-group-addon">kcal</span>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :minus_calories, "消費カロリー" %>
+        <%= f.label :minus_calories, "今日の消費カロリー" %>
         <div class="input-group">
           <%= f.number_field :minus_calories, step: 'any', class: 'form-control' %>
           <span class="input-group-addon">kcal</span>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :calorie_balance, "カロリー差（摂取カロリー・マイナス・消費カロリー)" %>
+        <%= f.label :calorie_balance, "今日のカロリー差（摂取カロリー・マイナス・消費カロリー)" %>
         <div class="input-group">
           <%= f.number_field :calorie_balance, step: 'any', class: 'form-control' %>
           <span class="input-group-addon">kcal</span>
