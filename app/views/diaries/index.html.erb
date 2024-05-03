@@ -1,5 +1,21 @@
+<!-- ヘッダー -->
 <%= render 'layouts/header' %>
 
-<%= month_calendar do |date| %>
-  <%= date %>
-<% end %>
+<!-- メイン画面 -->
+<div class= main>
+
+  <!-- ユーザー情報 -->
+  <div class="user-info-box">
+    <p>ニックネーム: <%= current_user.nickname %>さん</p>
+    <p>目標体重: <%= current_user.term_goal %>kg</p>
+    <p>最新の体重: <%= current_user.diaries.last.current_weight unless current_user.diaries.empty? %>kg</p>
+    <p>前回測定時との差: <%= current_user.diaries.last.weight_difference unless current_user.diaries.empty? %>kg</p>
+   </div>
+
+  <!-- カレンダー -->
+  <%= month_calendar do |date| %>
+    <%= date %>
+  <% end %>
+
+  <!-- 折れ線グラフ -->
+

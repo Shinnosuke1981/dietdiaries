@@ -1,4 +1,32 @@
+/******************************************************** 
+　メイン
+********************************************************/
+.user-info-box {
+  border: solid 3px pink;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0; /* ヘッダーやカレンダーとの間を開ける */
+  width: 20%; /* user-info-boxの幅を指定 */
+  margin-left: auto; /* 左側の余白を自動に */
+  margin-right: auto; /* 右側の余白を自動に */
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3); 
+  /* 追加するスタイリング */
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background-color: #f9f7f5; 
+  color: gray;
+}
+
+
+/******************************************************** 
+　カレンダー
+********************************************************/
 .simple-calendar .day {
   width: 100px;
   height: 100px;
 }
+
+/******************************************************** 
+　折れ線グラフ
+********************************************************/
