@@ -5,7 +5,7 @@
       <%= render "shared/error_messages", resource: @diary %>
 
       <div class="field">
-        <%= f.label :entry_date, "日付" %>
+        <%= f.label :entry_date, "投稿日" %>
         <%= f.date_select :entry_date, start_year: 2000, end_year: Time.now.year + 5, use_month_numbers: true %>
       </div>
 
