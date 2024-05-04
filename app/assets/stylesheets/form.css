@@ -2,10 +2,10 @@
   box-sizing: border-box;
 }
 
-.form-title {
+.page-title {
   text-align: center;
   font-size: 2em;
-  color: #0099ff;
+  color: #80c6f6;
 }
 
 form {
@@ -75,3 +75,4 @@ form a.back-button.button {
 form a.back-button.button:hover {
   background-color: #aaa;
 }
+

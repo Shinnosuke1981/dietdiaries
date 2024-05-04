@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user
@@ -22,6 +23,22 @@ class DiariesController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @diary = Diary.find(params[:id])
+    if @diary.user_id != current_user.id
+      redirect_to root_path, alert: '権限がありません'
+    end
+  end
+
+  private
+
+  def check_user
+    @diary = current_user.diaries.find(params[:id])
+    if @diary.nil?
+      redirect_to root_path, alert: '不正なアクセスです。'
     end
   end
 

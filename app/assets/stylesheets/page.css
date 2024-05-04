@@ -1,0 +1,39 @@
+.daily-page {
+  border: solid 3px pink;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background-color: #f9f7f5; 
+  color: gray;
+}
+
+.history {
+  margin-bottom: 1em; /* 1emは現在のfont-size. 通常1行分の高さ */
+}
+
+.actions-b {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-c {
+  width: 100px;
+  height: 40px;
+  border: 2px solid rgb(190, 182, 182);  /* 枠線を灰色で */
+  border-radius: 5px; /* 角丸にする */
+  padding: 5px 10px; /* ボタン内の間隔 */
+  text-decoration: none; /* テキストの下線を消す */
+  color: rgb(83, 107, 194);  /* 文字色 */
+  background-color: #c7e5fa;  /* ボタンの背景色 */
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+  display: flex;           /* 追記 */
+  align-items: center;     /* 追記 */
+  justify-content: center; /* 追記 */
+}
