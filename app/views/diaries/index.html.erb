@@ -30,7 +30,7 @@
   <!-- カレンダー -->
 <%= month_calendar events: @entries do |date, entries| %>
   <%= date %>
-  <% if !entries.empty? %>
+  <% if entries.present? %>
     <% entries.each do |entry| %>
       <div>
         <p class="small-font green">体重: <%= entry.current_weight %> kg</p>
@@ -40,7 +40,6 @@
     <% end %>
   <% end %>
 <% end %>
-
 
   <!-- 折れ線グラフ -->
 

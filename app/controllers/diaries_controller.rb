@@ -5,11 +5,11 @@ class DiariesController < ApplicationController
     if current_user
       @diaries = current_user.diaries
       @latest_diary = @diaries.last
+  
+      start_date = params.fetch(:start_date, Date.today.beginning_of_month).to_date
+      end_date = params.fetch(:end_date, Date.today.end_of_month).to_date
+      @entries = current_user.diaries.where(entry_date: start_date..end_date)
     end
-
-    start_date = params.fetch(:start_date, Date.today.beginning_of_month).to_date
-    end_date = params.fetch(:end_date, Date.today.end_of_month).to_date
-    @entries = Diary.where(entry_date: start_date..end_date)
   end
 
   def new
