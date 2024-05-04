@@ -9,7 +9,7 @@
   <% if current_user %>
     <div class="info-image-wrapper">
       <img class="info-image" src="<%= image_path 'diet.png' %>" alt="Diet image">
-      <p class="info-text">～成功も失敗も、全ては目標にたどり着くための糧～</p>
+      <p class="info-text">～失敗も成功も、全ては目標にたどり着くための糧～</p>
       <p class="info-text info-text-delay">～<%= current_user.nickname %>さん、今日の日記を書いていきましょう～</p>
     </div>
     <div class="user-info-box">
@@ -33,9 +33,9 @@
   <% if !entries.empty? %>
     <% entries.each do |entry| %>
       <div>
-        <p class="small-font">体重: <%= entry.current_weight %> kg</p>
-        <p class="small-font">摂取: <%= entry.plus_calories %> kcal</p>
-        <p class="small-font">消費: <%= entry.minus_calories %> kcal</p>
+        <p class="small-font green">体重: <%= entry.current_weight %> kg</p>
+        <p class="small-font pink">摂取: <%= entry.plus_calories %> kcal</p>
+        <p class="small-font blue">消費: <%= entry.minus_calories %> kcal</p>
       </div>
     <% end %>
   <% end %>

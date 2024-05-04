@@ -78,6 +78,24 @@
 
 .small-font {
   font-size: 16px;
+  font-weight: bold;
+}
+
+.small-font {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.green {
+  color: rgb(79, 202, 79);
+}
+
+.pink {
+  color: rgb(252, 117, 139);
+}
+
+.blue {
+  color: rgb(42, 184, 240);
 }
 
 /******************************************************** 
