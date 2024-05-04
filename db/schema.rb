@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_29_022411) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_02_092532) do
+  create_table "diaries", charset: "utf8", force: :cascade do |t|
+    t.date "entry_date", null: false
+    t.float "current_weight", null: false
+    t.float "weight_difference"
+    t.float "plus_calories"
+    t.float "minus_calories"
+    t.float "calorie_balance"
+    t.float "current_BFP"
+    t.text "diary_comment"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.integer "biological_sex_id"
@@ -35,4 +50,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_29_022411) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "diaries", "users"
 end

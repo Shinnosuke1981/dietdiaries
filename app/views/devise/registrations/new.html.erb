@@ -64,7 +64,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :appropriate_weight, "適正体重" %>
+        <%= f.label :appropriate_weight, " 適正体重＝身長(m)×身長(m)×22 " %>
         <div class="input-group">
           <%= f.number_field :appropriate_weight, step: 'any', class: 'form-control' %>
           <span class="input-group-addon">kg</span>
@@ -72,8 +72,8 @@
       </div>
 
       <div class="field">
-        <%= f.label :BMI, "ＢＭＩ" %>
-        <%= f.number_field :BMI, step: 'any' %>
+        <%= f.label :BMI, "BMI = 体重(kg) ÷ 身長(m) ÷ 身長(m)" %>
+        <%= f.number_field :BMI, step: 'any', placeholder: "BMIの正常値は22。25以上は肥満です" %>
       </div>
 
       <div class="field">
@@ -98,8 +98,9 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
+        <%= f.submit "Sign up", class: "button" %>
+        <%= link_to "戻る", root_path, class: "button back-button" %>
+      </div>     
     <% end %>
   </div>
 </div>

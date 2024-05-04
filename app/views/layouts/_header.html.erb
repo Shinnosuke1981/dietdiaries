@@ -3,14 +3,17 @@
   <div class="actions">
     <% if user_signed_in? %>
       <div class="button-wrapper">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button-B" %>
+      </div>
+      <div class="button-wrapper">
+        <%= link_to "日記投稿", new_diary_path, class: "button-B" %>
       </div>
     <% else %>
       <div class="button-wrapper">
-        <%= link_to "新規登録", new_user_registration_path, class: "button" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "button-B" %>
       </div>
       <div class="button-wrapper">
-        <%= link_to "ログイン", new_user_session_path, class: "button" %>
+        <%= link_to "ログイン", new_user_session_path, class: "button-B" %>
       </div>
     <% end %>
   </div>

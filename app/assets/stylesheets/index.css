@@ -1,0 +1,103 @@
+/******************************************************** 
+　メイン
+********************************************************/
+.user-info-box {
+  border: solid 3px pink;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background-color: #f9f7f5; 
+  color: gray;
+}
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.info-text {
+  position: absolute;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: gray;
+  white-space: nowrap;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  animation-name: fadeIn;
+  animation-duration: 6s;
+  animation-fill-mode: forwards; /* add this line */
+}
+
+.info-text-delay {
+  position: absolute;
+  font-weight: bold;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: gray;
+  white-space: nowrap;
+  opacity: 0; /* add this line */
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  animation-name: fadeIn;
+  animation-duration: 6s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards; /* add this line */
+}
+
+.user-info {
+  position: relative;
+}
+
+.info-image-wrapper {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.info-image {
+  width: 100%;
+  height: auto;
+}
+/******************************************************** 
+　カレンダー
+********************************************************/
+.simple-calendar .day {
+  width: 100px;
+  height: 100px;
+}
+
+.small-font {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.small-font {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.green {
+  color: rgb(79, 202, 79);
+}
+
+.pink {
+  color: rgb(252, 117, 139);
+}
+
+.blue {
+  color: rgb(42, 184, 240);
+}
+
+/******************************************************** 
+　折れ線グラフ
+********************************************************/

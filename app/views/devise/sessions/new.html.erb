@@ -27,8 +27,9 @@
       <% end -%>
 
       <div class="actions">
-        <%= f.submit "Log in" %>
-      </div>
+        <%= f.submit "Log in", class: "button" %>
+        <%= link_to "戻る", root_path, class: "button back-button" %>
+      </div>   
     <% end %>
   </div>
 </div>
