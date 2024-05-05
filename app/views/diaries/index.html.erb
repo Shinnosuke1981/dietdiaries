@@ -16,7 +16,7 @@
       <p>ニックネーム: <%= current_user.nickname %>さん</p>
       <p>目標体重: <%= current_user.term_goal %>kg</p>
       <p>最新の体重: <%= current_user.diaries.where('entry_date <= ?', Date.today).order(entry_date: :desc).first.current_weight unless current_user.diaries.empty? %>kg</p>
-      <p>前回測定時との差: <%= current_user.diaries.where('entry_date <= ?', Date.today).order(entry_date: :desc).first.weight_difference unless current_user.diaries.empty? %>kg</p>
+      <p>前回との差: <%= current_user.diaries.where('entry_date <= ?', Date.today).order(entry_date: :desc).first.weight_difference unless current_user.diaries.empty? %>kg</p>
     </div>
   <% else %>
     <div class="info-image-wrapper">

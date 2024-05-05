@@ -1,0 +1,41 @@
+<div class="contents row">
+  <div class="daily-page">
+    <h1 class="page-title"><%= @diary.entry_date.strftime("%Y年%m月%d日") %>の日記</h1>
+
+
+      <div class="history">
+        体重 : <%= @diary.current_weight %> kg
+      </div>
+
+      <div class="history">
+        前回測定時との差 : <%= @diary.weight_difference %> kg
+      </div>
+
+      <div class="history">
+        摂取カロリー : <%= @diary.plus_calories %> kcal
+      </div>
+
+      <div class="history">
+        消費カロリー : <%= @diary.minus_calories %> kcal
+      </div>
+
+      <div class="history">
+        カロリー差 : <%= @diary.calorie_balance %> kcal
+      </div>
+
+      <div class="history">
+        体脂肪率 : <%= @diary.current_BFP %> %
+      </div>
+
+      <div class="history">
+        自由コメント欄:
+          <%= @diary.diary_comment %>
+      </div>
+
+      <div class="actions-b">
+        <%= link_to "編集", edit_diary_path(@diary), class: "button-c" %>
+        <%= link_to "削除", diary_path(@diary), method: :delete, data: { confirm: 'Are you sure?' }, class: "button-c" %>
+        <%= link_to "戻る", diaries_path, class: "button-c" %>
+      </div>    
+  </div>
+</div>
