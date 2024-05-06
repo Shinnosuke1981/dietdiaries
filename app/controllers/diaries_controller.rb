@@ -14,7 +14,7 @@ class DiariesController < ApplicationController
   end
 
   def new
-    @diary = Diary.new
+    @diary = Diary.new(entry_date: params[:entry_date])
   end
 
   def create

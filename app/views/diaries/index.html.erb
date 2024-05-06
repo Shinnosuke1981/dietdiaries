@@ -13,7 +13,7 @@
       <p class="info-text info-text-delay">～<%= current_user.nickname %>さん、今日の日記を書いていきましょう～</p>
     </div>
     <div class="user-info-box">
-      <p>ニックネーム: <%= current_user.nickname %>さん</p>
+      <p>ニックネーム: <%= link_to "#{current_user.nickname}さん", user_path(current_user)%></p>
       <p>目標体重: <%= current_user.term_goal %>kg</p>
       <p>最新の体重: <%= current_user.diaries.where('entry_date <= ?', Date.today).order(entry_date: :desc).first.current_weight unless current_user.diaries.empty? %>kg</p>
       <p>前回との差: <%= current_user.diaries.where('entry_date <= ?', Date.today).order(entry_date: :desc).first.weight_difference unless current_user.diaries.empty? %>kg</p>
@@ -36,7 +36,12 @@
         <p class="small-font green">体重: <%= entry.current_weight %> kg</p>
         <p class="small-font pink">摂取: <%= entry.plus_calories %> kcal</p>
         <p class="small-font blue">消費: <%= entry.minus_calories %> kcal</p>
+        <%= link_to '🔍', diary_path(entry), class: 'small-font loupe' %>
       </div>
+    <% end %>
+  <% else %>
+    <% if date <= Date.today %>
+      <%= link_to "🖋", new_diary_path(entry_date: date), class: 'small-font pen block-display' %> 
     <% end %>
   <% end %>
 <% end %>
