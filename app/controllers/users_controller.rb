@@ -8,16 +8,18 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
+    @user = current_user
+    if @user.update(user_params)
+      bypass_sign_in(@user) 
       redirect_to root_path
     else
-      render :edit, status: :unprocessable_entity
+      render 'devise/registrations/edit', status: :unprocessable_entity
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :biological_sex_id, :birth_date, :age, :start_date, :height, :starting_weight, :appropriate_weight, :BMI, :starting_BFP, :term_goal, :comment, :email)
+    params.require(:user).permit(:nickname, :biological_sex_id, :birth_date, :age, :start_date, :height, :starting_weight, :appropriate_weight, :BMI, :starting_BFP, :term_goal, :comment, :email, :password, :password_confirmation)
   end
 end

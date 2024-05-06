@@ -1,43 +1,106 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="contents row">
+  <div class="container">
+    <h1 class="page-title">ユーザー情報編集</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_with model: @user, url: user_path(current_user), id: 'edit_user', class: 'edit_user', local: true, method: :patch do |f| %>
+      <%= render 'devise/shared/error_messages', resource: @user %>
+      <div class="field">
+        <%= f.label :nickname, "ニックネーム (6文字まで)" %> <br />
+        <%= f.text_field :nickname, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %><br />
+        <%= f.email_field :email %>
+      </div>
+ 
+      <div class="field">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="field">
+        <%= f.label :password_confirmation, "パスワード確認（変更がない場合、もとのパスワードを入力してください）" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="field">
+        <%= f.label :biological_sex_id, "性別" %>
+        <%= f.collection_select :biological_sex_id, BiologicalSex.all, :id, :name %>
+      </div>
+     
+     <div class="field">
+        <%= f.label :birth_date,"生年月日" %>
+        <%= custom_date_select :user, :birth_date %>
+      </div> 
+
+      <div class="field">
+         <%= f.label :age, "年齢" %>
+         <div class="input-group">
+           <%= f.number_field :age, class: 'form-control' %>
+           <span class="input-group-addon">才</span>
+         </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :start_date, "ダイエット開始日" %>
+        <%= custom_date_select :user, :start_date, start_year: 2000, end_year: Time.now.year + 5 %>
+      </div>
+
+      <div class="field">
+        <%= f.label :height, "身長" %>
+        <div class="input-group">
+          <%= f.number_field :height, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">cm</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :starting_weight, "ダイエット前の体重" %>
+        <div class="input-group">
+          <%= f.number_field :starting_weight, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :appropriate_weight, " 適正体重＝身長(m)×身長(m)×22 " %>
+        <div class="input-group">
+          <%= f.number_field :appropriate_weight, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :BMI, "BMI = 体重(kg) ÷ 身長(m) ÷ 身長(m)" %>
+        <%= f.number_field :BMI, step: 'any', placeholder: "BMIの正常値は22。25以上は肥満です" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :starting_BFP, "ダイエット前の体脂肪率" %>
+        <div class="input-group">
+          <%= f.number_field :starting_BFP, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :term_goal, "目標体重" %>
+        <div class="input-group">
+          <%= f.number_field :term_goal, step: 'any', class: 'form-control' %> <!-- ※typoがあったので`term_goal`に修正 -->
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+      
+      <div class="field">
+        <%= f.label :comment, "自由コメント欄（４００文字まで）" %> <br />
+        <%= f.text_area :comment, placeholder:"自由に記述してください。ダイエット方法、ダイエットをするための決意表明など", rows: 5 %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "更新", class: "button" %>
+        <%= link_to "キャンセル", user_path(current_user), class: "button back-button" %>
+      </div>     
     <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>
