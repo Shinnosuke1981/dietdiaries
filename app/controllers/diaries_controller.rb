@@ -33,6 +33,25 @@ class DiariesController < ApplicationController
     end
   end
 
+  def edit
+    @diary = Diary.find(params[:id])
+  end
+
+  def update
+    @diary = Diary.find(params[:id])
+    if @diary.update(diary_params)
+      redirect_to @diary, notice: '日記が正常に更新されました'
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @diary = Diary.find(params[:id])
+    @diary.destroy
+    redirect_to diaries_url, notice: '日記が正常に削除されました'
+  end
+
   private
 
   def check_user

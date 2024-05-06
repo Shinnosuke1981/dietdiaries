@@ -34,7 +34,7 @@
 
       <div class="actions-b">
         <%= link_to "編集", edit_diary_path(@diary), class: "button-c" %>
-        <%= link_to "削除", diary_path(@diary), method: :delete, data: { confirm: 'Are you sure?' }, class: "button-c" %>
+        <%= link_to "削除", "/diaries/#{@diary.id}", data: {turbo_method: :delete}, class:"button-c" %> 
         <%= link_to "戻る", diaries_path, class: "button-c" %>
       </div>    
   </div>

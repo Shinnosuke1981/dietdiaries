@@ -1,7 +1,7 @@
 <div class="contents row">
   <div class="container">
-    <h1 class="page-title">新しい日記</h1>
-    <%= form_with model: @diary, url: diaries_path, id: 'new_diary', class: 'new_diary', local: true do |f| %>
+    <h1 class="page-title">日記の編集</h1>
+    <%= form_with model: @diary, url: diary_path(@diary), id: 'edit_diary', class: 'edit_diary', local: true, method: :patch do |f| %>
       <%= render "shared/error_messages", resource: @diary %>
 
       <div class="field">
@@ -63,10 +63,9 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "日記投稿", class: "button" %>
-        <%= link_to "戻る", root_path, class: "button back-button" %>
+        <%= f.submit "日記更新", class: "button" %>
+        <%= link_to "キャンセル", diary_path(@diary), class: "button back-button" %>
       </div>
     <% end %>
   </div>
 </div>
-
