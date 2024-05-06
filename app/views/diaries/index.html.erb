@@ -40,11 +40,10 @@
       </div>
     <% end %>
   <% else %>
-    <% if date <= Date.today %>
+    <% if date <= Date.today && user_signed_in? %>
       <%= link_to "🖋", new_diary_path(entry_date: date), class: 'small-font pen block-display' %> 
     <% end %>
   <% end %>
 <% end %>
-
   <!-- 折れ線グラフ -->
 
