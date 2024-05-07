@@ -45,5 +45,8 @@
     <% end %>
   <% end %>
 <% end %>
+
   <!-- 折れ線グラフ -->
+<%= line_chart @data, ytitle: "単位kg", discrete: true, xtitle: "日付", colors: ["rgb(79, 202, 79)"], ytitle_position: :right, use: "Chart.js"%>
+<%= line_chart @chart_data, ytitle: "単位kcal", discrete: true, xtitle: "日付", colors: ["rgb(252, 117, 139)", "rgb(42, 184, 240)"], ytitle_position: :right, use: "Chart.js"%>
 

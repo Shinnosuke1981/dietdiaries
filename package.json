@@ -1,0 +1,8 @@
+{
+  "name": "dietdiaries",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "chartkick.js": "^4.4.2"
+  }
+}
