@@ -4,18 +4,19 @@ class DiariesController < ApplicationController
 
   def index
     if current_user
-      @data = current_user.diaries.order(:entry_date).pluck(:entry_date, :current_weight).to_h
-      @data1 = current_user.diaries.order(:entry_date).pluck(:entry_date, :plus_calories).to_h
-      @data2 = current_user.diaries.order(:entry_date).pluck(:entry_date, :minus_calories).to_h
-      @chart_data =[{name:"1", data:@data1},{name:"2",data:@data2}]
-      puts "@data:#{@data}"
-      puts "@data1:#{@data1}"
-      puts "@chart_data:#{@chart_data}"
       @diaries = current_user.diaries
       @latest_diary = @diaries.last
+
+      # カレンダー
       start_date = params.fetch(:start_date, Date.today.beginning_of_month).to_date
       end_date = params.fetch(:end_date, Date.today.end_of_month).to_date
       @entries = current_user.diaries.where(entry_date: start_date..end_date)
+
+      # 折れ線グラフ
+      @data = [{name:"体重", data: current_user.diaries.order(:entry_date).pluck(:entry_date, :current_weight).to_h}]
+      @data1 = current_user.diaries.order(:entry_date).pluck(:entry_date, :plus_calories).to_h
+      @data2 = current_user.diaries.order(:entry_date).pluck(:entry_date, :minus_calories).to_h
+      @chart_data =[{name:"摂取カロリー", data:@data1},{name:"消費カロリー",data:@data2}]
     end
   end
 
