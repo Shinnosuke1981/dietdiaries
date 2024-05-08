@@ -32,6 +32,7 @@
   <span class="content-title">＜ 日記カレンダー ＞</span>
 <% end %>
 
+
 <%= month_calendar events: @entries do |date, entries| %>
   <%= date %>
   <% if entries.present? %>

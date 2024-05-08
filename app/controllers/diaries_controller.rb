@@ -3,13 +3,14 @@ class DiariesController < ApplicationController
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   def index
+    puts "PARAMS: ", params.inspect
     if current_user
       @diaries = current_user.diaries
       @latest_diary = @diaries.last
 
       # カレンダー
-      start_date = params.fetch(:start_date, Date.today.beginning_of_month).to_date
-      end_date = params.fetch(:end_date, Date.today.end_of_month).to_date
+      start_date = params.fetch(:start_date, Date.today.beginning_of_month).to_date.beginning_of_week(:sunday)
+      end_date = params.fetch(:end_date, Date.today.end_of_month).to_date.end_of_week(:saturday)
       @entries = current_user.diaries.where(entry_date: start_date..end_date)
 
       # 折れ線グラフ
