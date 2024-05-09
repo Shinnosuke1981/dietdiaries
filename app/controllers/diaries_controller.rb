@@ -3,7 +3,6 @@ class DiariesController < ApplicationController
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    puts "PARAMS: ", params.inspect
     if current_user
       @diaries = current_user.diaries
       @latest_diary = @diaries.last
