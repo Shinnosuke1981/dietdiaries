@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_diary, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -34,36 +35,32 @@ class DiariesController < ApplicationController
   end
 
   def show
-    @diary = Diary.find(params[:id])
-    if @diary.user_id != current_user.id
-      redirect_to root_path, alert: '権限がありません'
-    end
   end
 
   def edit
-    @diary = Diary.find(params[:id])
   end
 
   def update
-    @diary = Diary.find(params[:id])
     if @diary.update(diary_params)
       redirect_to @diary, notice: '日記が正常に更新されました'
     else
       render :edit
     end
   end
-  
+
   def destroy
-    @diary = Diary.find(params[:id])
     @diary.destroy
     redirect_to diaries_url, notice: '日記が正常に削除されました'
   end
 
   private
 
+  def set_diary
+    @diary = Diary.find(params[:id])
+  end
+
   def check_user
-    @diary = current_user.diaries.find(params[:id])
-    if @diary.nil?
+    if @diary.nil? || @diary.user != current_user
       redirect_to root_path, alert: '不正なアクセスです。'
     end
   end
