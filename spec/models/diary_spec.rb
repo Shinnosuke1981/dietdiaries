@@ -45,6 +45,11 @@ RSpec.describe Diary, type: :model do
         @diary.current_weight = 0
         expect(@diary).to_not be_valid
       end
+
+      it '自由コメント欄が401文字以上だと投稿できない' do
+        @diary.diary_comment = 'a' * 401
+        expect(@diary).to_not be_valid
+      end
     end
   end
 end

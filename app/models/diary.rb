@@ -12,6 +12,7 @@ class Diary < ApplicationRecord
   validates :minus_calories, numericality: true, allow_blank: true
   validates :calorie_balance, numericality: true, allow_blank: true
   validates :current_BFP, numericality: true, allow_blank: true
+  validates :diary_comment, length: { maximum: 400 }
 
   validate :entry_date_cannot_be_in_the_future
 
