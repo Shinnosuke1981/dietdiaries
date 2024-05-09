@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :diaries
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 10 }
   validates :height, presence: true
   validates :height, numericality: true, allow_blank: true
   validates :starting_weight, numericality: true, allow_blank: true
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: '半角英数字混合を使用してください' }
   validates_inclusion_of :biological_sex_id, in: 2..4, message: 'を選択してください'
+  validates :comment, length: { maximum: 200 }
 
   validate :email_include_at
   def email_include_at
