@@ -12,4 +12,13 @@ class Diary < ApplicationRecord
   validates :minus_calories, numericality: true, allow_blank: true
   validates :calorie_balance, numericality: true, allow_blank: true
   validates :current_BFP, numericality: true, allow_blank: true
+  validates :diary_comment, length: { maximum: 400 }
+
+  validate :entry_date_cannot_be_in_the_future
+
+  def entry_date_cannot_be_in_the_future
+    if entry_date.present? && entry_date > Date.today
+      errors.add(:entry_date, "未来の日付は入力できません")
+    end
+  end
 end

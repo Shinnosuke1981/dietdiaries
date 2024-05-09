@@ -25,6 +25,12 @@ RSpec.describe Diary, type: :model do
         expect(duplicate_diary).to_not be_valid
       end
 
+      it '未来の日付では投稿できない' do
+        @diary.entry_date = Date.tomorrow
+        @diary.valid?
+        expect(@diary.errors[:entry_date]).to include("未来の日付は入力できません")
+      end
+
       it '体重がないと投稿できない' do
         @diary.current_weight = nil
         expect(@diary).to_not be_valid
@@ -37,6 +43,11 @@ RSpec.describe Diary, type: :model do
 
       it '体重が0以下だと投稿できない' do
         @diary.current_weight = 0
+        expect(@diary).to_not be_valid
+      end
+
+      it '自由コメント欄が401文字以上だと投稿できない' do
+        @diary.diary_comment = 'a' * 401
         expect(@diary).to_not be_valid
       end
     end

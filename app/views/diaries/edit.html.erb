@@ -1,0 +1,71 @@
+<div class="contents row">
+  <div class="container">
+    <h1 class="page-title">日記の編集</h1>
+    <%= form_with model: @diary, url: diary_path(@diary), id: 'edit_diary', class: 'edit_diary', local: true, method: :patch do |f| %>
+      <%= render "shared/error_messages", resource: @diary %>
+
+      <div class="field">
+        <%= f.label :entry_date, "投稿日" %>
+        <%= f.date_select :entry_date, start_year: 2000, end_year: Time.now.year + 5, use_month_numbers: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_weight, "現在の体重" %>
+        <div class="input-group">
+          <%= f.number_field :current_weight, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :weight_difference, "前回測定時との差（前回体重・マイナス・現在の体重）" %>
+        <div class="input-group">
+          <%= f.number_field :weight_difference, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kg</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :plus_calories, "今日の摂取カロリー" %>
+        <div class="input-group">
+          <%= f.number_field :plus_calories, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :minus_calories, "今日の消費カロリー" %>
+        <div class="input-group">
+          <%= f.number_field :minus_calories, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :calorie_balance, "今日のカロリー差（摂取カロリー・マイナス・消費カロリー)" %>
+        <div class="input-group">
+          <%= f.number_field :calorie_balance, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">kcal</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_BFP, "現在の体脂肪率" %>
+        <div class="input-group">
+          <%= f.number_field :current_BFP, step: 'any', class: 'form-control' %>
+          <span class="input-group-addon">%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :diary_comment, "自由コメント欄（４００文字まで)" %><br />
+        <%= f.text_area :diary_comment, placeholder:"日々の取り組み、試したこと、運動や食事の内容など自由に記述してください", rows: 5 %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "日記更新", class: "button" %>
+        <%= link_to "キャンセル", diary_path(@diary), class: "button back-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

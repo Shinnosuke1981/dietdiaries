@@ -1,0 +1,60 @@
+<div class="daily-page">
+  <h1 class="page-title">ユーザー詳細ページ</h1>
+
+  <div class="history">
+    ニックネーム : <%= @user.nickname %>
+  </div>
+
+  <div class="history">
+    メールアドレス : <%= @user.email %>
+  </div>
+
+  <div class="history">
+    性別 : <%= BiologicalSex.find(@user.biological_sex_id).name %>
+  </div>
+
+  <div class="history">
+    生年月日 : <%= @user.birth_date.strftime("%Y年%m月%d日") %>
+  </div>
+
+  <div class="history">
+     年齢 : <%= @user.age %> 才
+  </div>
+
+  <div class="history">
+    ダイエット開始日 : <%= @user.start_date.strftime("%Y年%m月%d日") %>
+  </div>
+  
+  <div class="history">
+    身長 : <%= @user.height %> cm
+  </div>
+
+  <div class="history">
+    ダイエット前の体重 : <%= @user.starting_weight %> kg
+  </div>
+
+  <div class="history">
+    適正体重 : <%= @user.appropriate_weight %> kg
+  </div>
+
+  <div class="history">
+    BMI : <%= @user.BMI %>
+  </div>
+
+  <div class="history">
+    ダイエット前の体脂肪率 : <%= @user.starting_BFP %> %
+  </div>
+
+  <div class="history">
+    目標体重 : <%= @user.term_goal %> kg
+  </div>
+
+  <div class="history">
+    自由コメント欄 : <%= @user.comment %>
+  </div>
+
+  <div class="actions-b">
+    <%= link_to '編集', edit_user_registration_path, class: "button-c" %>
+    <%= link_to '戻る', root_path, class: "button-c" %>
+  </div>
+</div>
