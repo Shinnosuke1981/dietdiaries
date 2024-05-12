@@ -31,10 +31,21 @@ https://dietdiaries-40523.onrender.com
 健康や美容などの理由からダイエットに取り組む人は多くいるが、成功したり、長期的に続けることが困難である。ダイエットに関する書籍やネット上の情報はあふれているが、そのダイエットが自分に合っているかはなかなかわからない。ダイエットを始めてみても効果や自分に合っているかがわかる前に挫折してしまう人も少なくない。様々なダイエット法があるがその基本は主に食事と運動にある。食事制限による摂取カロリーの変化、活動による消費カロリーの変化が体重にどのような変化をもたらすのかを記録することでダイエットの効果を実感し、意欲を維持し、ダイエットを方法を建設的に変えることにつながるのではないかとの仮説を立てた。市場を調査したところ、類似する先行のアプリケーションはすでに数多くあるが、体重と摂取カロリー、消費カロリーの３点の変化を同時に可視化できるものはないようだった。そこでカレンダーに日々の摂取カロリー、消費カロリー、体重を記録し、それを一覧で表示し変化を折れ線グラフで可視化したアプリケーションを開発することにした。
 
 ＃洗い出した要件
-
+[![Image from Gyazo](https://i.gyazo.com/6315388f154c876623b6662d5b4dcfe7.png)](https://gyazo.com/6315388f154c876623b6662d5b4dcfe7)
 
 ＃実装した機能についての画像やGIFおよびその説明
+＃＃ユーザー新規登録機能
+[![Image from Gyazo](https://i.gyazo.com/865a9be00f585bac592d1a08201542df.gif)](https://gyazo.com/865a9be00f585bac592d1a08201542df)
 
+＃＃日記投稿機能
+[![Image from Gyazo](https://i.gyazo.com/621ec3fdba4934ebf7595df3987c3a17.gif)](https://gyazo.com/621ec3fdba4934ebf7595df3987c3a17)
+[![Image from Gyazo](https://i.gyazo.com/9d0a75b72bedf09bbeb2da75bcbef379.gif)](https://gyazo.com/9d0a75b72bedf09bbeb2da75bcbef379)
+
+＃＃日記データのカレンダー表示機能
+[![Image from Gyazo](https://i.gyazo.com/b9d51cced51cb0b6f6cd047a0fd4b492.png)](https://gyazo.com/b9d51cced51cb0b6f6cd047a0fd4b492)
+
+＃＃日記データのグラフ表示機能
+[![Image from Gyazo](https://i.gyazo.com/b123f2af7ff6d06736a85f0816ab36c4.png)](https://gyazo.com/b123f2af7ff6d06736a85f0816ab36c4)
 
 
 ＃実装予定の機能
@@ -42,15 +53,16 @@ https://dietdiaries-40523.onrender.com
 消費カロリーや摂取カロリーを割り出すための指標の表示
 
 ＃データベース設計
+[![Image from Gyazo](https://i.gyazo.com/f493319ae189560ad107940dfb5f49ae.png)](https://gyazo.com/f493319ae189560ad107940dfb5f49ae)
 
 ＃画面遷移図
-
+[![Image from Gyazo](https://i.gyazo.com/2dd66a122e4396799143a4054192954f.png)](https://gyazo.com/2dd66a122e4396799143a4054192954f)
 
 ＃開発環境
 ・フロントエンド　HTML/CSS
 ・バックエンド　Ruby on Rails
-・インフラ　
+・インフラ　Windows
 ・テスト　Rspec
 ・テキストエディタ　Visual Studio Code
-・タスク管理　エクセル
+・タスク管理　Excel
 
