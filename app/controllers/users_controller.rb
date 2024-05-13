@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:edit, :update]
 
   def show
+    if user_signed_in?
+      @user = current_user
+    else
+      redirect_to root_path, notice: "ログインしてください。"
+    end
   end
 
   def edit
@@ -14,6 +19,12 @@ class UsersController < ApplicationController
     else
       render 'devise/registrations/edit', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user = current_user
+    @user.destroy
+    redirect_to root_path, notice: "ユーザーが削除されました。"
   end
 
   private
