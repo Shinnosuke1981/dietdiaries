@@ -55,6 +55,7 @@
 
   <div class="actions-b">
     <%= link_to '編集', edit_user_registration_path, class: "button-c" %>
+    <%= link_to "削除", "/users/#{@user.id}", data: {turbo_method: :delete}, class:"button-c" %>
     <%= link_to '戻る', root_path, class: "button-c" %>
   </div>
 </div>

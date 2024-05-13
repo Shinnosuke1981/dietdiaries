@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def show
+    if user_signed_in?
+      @user = current_user
+    else
+      redirect_to root_path, notice: "ログインしてください。"
+    end
   end
 
   def edit
@@ -9,11 +14,16 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      bypass_sign_in(@user) 
+      bypass_sign_in(@user) if user_params[:password].present?
       redirect_to root_path
     else
       render 'devise/registrations/edit', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path, notice: "ユーザーが削除されました。"
   end
 
   private
