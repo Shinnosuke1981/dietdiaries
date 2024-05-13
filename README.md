@@ -64,7 +64,6 @@ https://dietdiaries-40523.onrender.com
 # 開発環境  
 ・フロントエンド　HTML/CSS  
 ・バックエンド　Ruby on Rails  
-・インフラ　Windows  
 ・テスト　Rspec  
 ・テキストエディタ　Visual Studio Code  
 ・タスク管理　Excel
