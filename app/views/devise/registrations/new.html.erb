@@ -50,7 +50,7 @@
       <div class="field">
         <%= f.label :height, "身長" %>
         <div class="input-group">
-          <%= f.number_field :height, step: 'any', class: 'form-control' %>
+          <%= f.number_field :height, step: 'any', class: 'form-control', id: 'user_height' %>
           <span class="input-group-addon">cm</span>
         </div>
       </div>
@@ -58,22 +58,25 @@
       <div class="field">
         <%= f.label :starting_weight, "ダイエット前の体重" %>
         <div class="input-group">
-          <%= f.number_field :starting_weight, step: 'any', class: 'form-control' %>
+          <%= f.number_field :starting_weight, step: 'any', class: 'form-control', id: 'user_weight' %>
           <span class="input-group-addon">kg</span>
         </div>
       </div>
 
       <div class="field">
-        <%= f.label :appropriate_weight, " 適正体重＝身長(m)×身長(m)×22 " %>
+        <%= f.label :appropriate_weight, "適正体重＝身長(m)×身長(m)×22" %>
         <div class="input-group">
-          <%= f.number_field :appropriate_weight, step: 'any', class: 'form-control' %>
+          <%= f.number_field :appropriate_weight, step: 'any', class: 'form-control', id: 'user_appropriate_weight', readonly: true %>
           <span class="input-group-addon">kg</span>
         </div>
       </div>
 
       <div class="field">
         <%= f.label :BMI, "BMI = 体重(kg) ÷ 身長(m) ÷ 身長(m)" %>
-        <%= f.number_field :BMI, step: 'any', placeholder: "BMIの正常値は22。25以上は肥満です" %>
+        <div class="input-group">
+          <%= f.number_field :BMI, step: 'any', class: 'form-control', id: 'user_BMI', readonly: true %>
+          <span class="input-group-addon"></span>
+        </div>
       </div>
 
       <div class="field">
@@ -93,7 +96,7 @@
       </div>
       
       <div class="field">
-        <%= f.label :comment, "自由コメント欄（４００文字まで）" %> <br />
+        <%= f.label :comment, "自由コメント欄（２００文字まで）" %> <br />
         <%= f.text_area :comment, placeholder:"自由に記述してください。ダイエット方法、ダイエットをするための決意表明など", rows: 5 %>
       </div>
 
@@ -104,3 +107,36 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const heightField = document.getElementById('user_height');
+    const weightField = document.getElementById('user_weight');
+    const appropriateWeightField = document.getElementById('user_appropriate_weight');
+    const bmiField = document.getElementById('user_BMI');
+
+    function calculateAppropriateWeightAndBMI() {
+      const height = parseFloat(heightField.value);
+      const weight = parseFloat(weightField.value);
+
+      if (!isNaN(height) && height > 0) {
+        const heightInMeters = height / 100;
+        const appropriateWeight = Math.round(heightInMeters * heightInMeters * 22 * 100) / 100;
+        appropriateWeightField.value = appropriateWeight;
+
+        if (!isNaN(weight) && weight > 0) {
+          const bmi = Math.round((weight / (heightInMeters * heightInMeters)) * 100) / 100;
+          bmiField.value = bmi;
+        } else {
+          bmiField.value = '';
+        }
+      } else {
+        appropriateWeightField.value = '';
+        bmiField.value = '';
+      }
+    }
+
+    heightField.addEventListener('input', calculateAppropriateWeightAndBMI);
+    weightField.addEventListener('input', calculateAppropriateWeightAndBMI);
+  });
+</script>
