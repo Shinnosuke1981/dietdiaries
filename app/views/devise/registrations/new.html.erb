@@ -73,6 +73,16 @@
 
       <div class="field">
         <%= f.label :BMI, "BMI = 体重(kg) ÷ 身長(m) ÷ 身長(m)" %>
+        <div>
+          <p>
+            <strong>BMIの判定基準:</strong><br>
+            18.5未満： 低体重（痩せ）<br>
+            18.5～24.9： 標準体重<br>
+            25.0～29.9： 肥満（1度）<br>
+            30.0～34.9： 肥満（2度）<br>
+            35.0以上： 肥満（3度）
+          </p>
+        </div>
         <div class="input-group">
           <%= f.number_field :BMI, step: 'any', class: 'form-control', id: 'user_BMI', readonly: true %>
           <span class="input-group-addon"></span>
