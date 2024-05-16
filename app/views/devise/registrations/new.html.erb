@@ -5,7 +5,9 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :nickname, "ニックネーム (10文字まで)" %> <br />
+        <%= f.label :nickname, "ニックネーム (10文字まで)" %>
+        <!--<span class="indispensable">必須</span> <br />-->
+        <span class="indispensable" style="background: #ea352d; margin-left: 8px; padding: 3px; border-radius: 2px; color: #fff; font-size: 12px; font-weight: bold;">必須</span>
         <%= f.text_field :nickname, autofocus: true %>
       </div>
 

@@ -76,3 +76,26 @@ form a.back-button.button:hover {
   background-color: #aaa;
 }
 
+.bmi-criteria-box {
+  font-weight: bold;
+  color: gray;
+  border: solid 3px pink;
+  border-radius: 5px;
+  padding: 20px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background-color: #f9f7f5; 
+}
+
+.form .field .indispensable {
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
