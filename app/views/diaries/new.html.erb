@@ -12,15 +12,15 @@
       <div class="field">
         <%= f.label :current_weight, "現在の体重" %>
         <div class="input-group">
-          <%= f.number_field :current_weight, step: 'any', class: 'form-control' %>
+          <%= f.number_field :current_weight, step: 'any', class: 'form-control', id: 'current_weight' %>
           <span class="input-group-addon">kg</span>
         </div>
       </div>
 
       <div class="field">
-        <%= f.label :weight_difference, "前回測定時との差（前回体重・マイナス・現在の体重）" %>
+        <%= f.label :weight_difference, "前回測定時との体重差[自動計算]" %>
         <div class="input-group">
-          <%= f.number_field :weight_difference, step: 'any', class: 'form-control' %>
+          <%= f.number_field :weight_difference, step: 'any', class: 'form-control', id: 'weight_difference', readonly: true %>
           <span class="input-group-addon">kg</span>
         </div>
       </div>
@@ -70,3 +70,22 @@
   </div>
 </div>
 
+<% if @previous_diary %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const previousWeight = <%= @previous_diary.current_weight %>;
+      const currentWeightInput = document.getElementById('current_weight');
+      const weightDifferenceInput = document.getElementById('weight_difference');
+
+      currentWeightInput.addEventListener('input', function() {
+        const currentWeight = parseFloat(currentWeightInput.value);
+        if (!isNaN(currentWeight)) {
+          const weightDifference = previousWeight - currentWeight;
+          weightDifferenceInput.value = weightDifference.toFixed(2);
+        } else {
+          weightDifferenceInput.value = '';
+        }
+      });
+    });
+  </script>
+<% end %>

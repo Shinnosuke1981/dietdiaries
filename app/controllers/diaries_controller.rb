@@ -23,10 +23,17 @@ class DiariesController < ApplicationController
 
   def new
     @diary = Diary.new(entry_date: params[:entry_date])
+    @previous_diary = current_user.diaries.order(entry_date: :desc).first
   end
 
   def create
     @diary = Diary.new(diary_params)
+    @previous_diary = current_user.diaries.order(entry_date: :desc).first
+
+    if @previous_diary
+      @diary.weight_difference = @previous_diary.current_weight - @diary.current_weight
+    end
+
     if @diary.save
       redirect_to root_path
     else
